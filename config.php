@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 $host = "sql112.infinityfree.com";
 $user = "if0_41890453";
 $pass = "xDa1LAJ9fd";
-$db = "if0_41890453_tournament"; // CHANGE THIS to your real database name
+$db   = "if0_41890453_tournament";
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 
