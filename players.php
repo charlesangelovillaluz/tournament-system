@@ -37,6 +37,8 @@ if(isset($_GET['delete'])){
     <title>Players</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -123,5 +125,7 @@ while($row = mysqli_fetch_assoc($result)){
 <a href="dashboard.php">Back to Dashboard</a>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

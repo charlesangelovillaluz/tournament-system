@@ -82,7 +82,7 @@ $recent = mysqli_fetch_assoc($recent_match);
 <div class="col-md-3">
 <div class="card bg-dark text-white">
 <div class="card-body">
-<h4><?php echo $top['team_name'] ?? 'N/A'; ?></h4>
+<h4><?php echo isset($top['team_name']) ? $top['team_name'] : 'N/A'; ?></h4>
 <p>Top Team</p>
 </div>
 </div>
@@ -110,6 +110,6 @@ Team <?php echo $recent['team2_id']; ?>
 </div>
 
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

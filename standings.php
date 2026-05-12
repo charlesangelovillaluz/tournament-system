@@ -75,16 +75,11 @@ $sql = "SELECT standings.*,
 teams.team_name
 
 FROM standings
-
 INNER JOIN teams
 ON standings.team_id = teams.id
-
 ORDER BY wins DESC, points DESC";
-
 $result = mysqli_query($conn, $sql);
-
 $rank = 1;
-
 while($row = mysqli_fetch_assoc($result)){
 
 ?>
@@ -92,17 +87,11 @@ while($row = mysqli_fetch_assoc($result)){
 <tr>
 
 <td><?php echo $rank++; ?></td>
-
 <td><?php echo $row['team_name']; ?></td>
-
 <td><?php echo $row['wins']; ?></td>
-
 <td><?php echo $row['losses']; ?></td>
-
 <td><?php echo $row['played']; ?></td>
-
 <td><?php echo $row['points']; ?></td>
-
 </tr>
 
 <?php } ?>
@@ -113,5 +102,7 @@ while($row = mysqli_fetch_assoc($result)){
 
 <a href="dashboard.php">Back to Dashboard</a>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

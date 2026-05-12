@@ -53,6 +53,8 @@ if(isset($_GET['delete'])){
     <title>Matches</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -117,10 +119,18 @@ matches.*,
 t1.team_name AS team1_name,
 t2.team_name AS team2_name,
 w.team_name AS winner_name
+
 FROM matches
-INNER JOIN teams t1 ON matches.team1_id = t1.id
-INNER JOIN teams t2 ON matches.team2_id = t2.id
-LEFT JOIN teams w ON matches.winner_id = w.id
+
+INNER JOIN teams t1
+ON matches.team1_id = t1.id
+
+INNER JOIN teams t2
+ON matches.team2_id = t2.id
+
+LEFT JOIN teams w
+ON matches.winner_id = w.id
+
 ORDER BY matches.id DESC";
 
 $result = mysqli_query($conn, $sql);
@@ -129,17 +139,34 @@ while($row = mysqli_fetch_assoc($result)){
 ?>
 
 <tr>
-    <td><?php echo $row['id']; ?></td>
-    <td><?php echo $row['team1_name']; ?></td>
-    <td><?php echo $row['score1']." - ".$row['score2']; ?></td>
-    <td><?php echo $row['team2_name']; ?></td>
-    <td><?php echo $row['match_date']; ?></td>
-    <td><?php echo $row['winner_name'] ?? 'Draw'; ?></td>
-    <td>
-        <a href="matches.php?delete=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">
-            Delete
-        </a>
-    </td>
+
+<td><?php echo $row['id']; ?></td>
+
+<td><?php echo $row['team1_name']; ?></td>
+
+<td><?php echo $row['score1']." - ".$row['score2']; ?></td>
+
+<td><?php echo $row['team2_name']; ?></td>
+
+<td><?php echo $row['match_date']; ?></td>
+
+<td>
+<?php
+if(isset($row['winner_name']) && $row['winner_name'] != ''){
+    echo $row['winner_name'];
+} else {
+    echo "Draw";
+}
+?>
+</td>
+
+<td>
+<a href="matches.php?delete=<?php echo $row['id']; ?>"
+class="btn btn-danger btn-sm">
+Delete
+</a>
+</td>
+
 </tr>
 
 <?php } ?>
@@ -149,5 +176,6 @@ while($row = mysqli_fetch_assoc($result)){
 <a href="dashboard.php">Back to Dashboard</a>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
